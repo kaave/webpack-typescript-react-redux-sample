@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es2015",
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "typings/browser.d.ts",
+    "typings/browser/**"
+  ],
+  "filesGlob": [
+    "typings/main.d.ts",
+    "app/scripts/**/*.ts",
+    "app/scripts/**/*.tsx",
+    "test/scripts/**/*.ts",
+    "test/scripts/**/*.tsx"
+  ],
+  "files": [
+    "typings/main.d.ts",
+    "app/scripts/tt.ts",
+    "app/scripts/components/Hello.tsx",
+    "app/scripts/entry_points/index.tsx",
+    "test/scripts/tt.spec.ts",
+    "test/scripts/components/Hello.spec.tsx"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}
