@@ -16,6 +16,8 @@ test('Class', t => {
 });
 
 test('Props', t => {
-  const wrapper = shallow(<Hello {...props} />);
-  t.truthy(wrapper.contains(<span>Hello from {props.compiler} and {props.framework}!</span>));
+  const wrapper = mount(<Hello {...props} />);
+  const { compiler, framework } = wrapper.props();
+  t.deepEqual(compiler, props.compiler);
+  t.deepEqual(framework, props.framework);
 });
