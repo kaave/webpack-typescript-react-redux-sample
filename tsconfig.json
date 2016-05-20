@@ -21,10 +21,8 @@
   ],
   "files": [
     "typings/main.d.ts",
-    "app/scripts/tt.ts",
     "app/scripts/components/Hello.tsx",
     "app/scripts/entry_points/index.tsx",
-    "test/scripts/tt.spec.ts",
     "test/scripts/components/Hello.spec.tsx"
   ],
   "atom": {
