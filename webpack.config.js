@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -11,7 +12,6 @@ module.exports = {
     path: './dist/',
     filename: 'js/bundle.js'
   },
-
   // Enable sourcemaps for debugging webpack's output.
   // devtool: 'source-map',
 
@@ -42,7 +42,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('./css/[name].css')
+    new ExtractTextPlugin('./css/[name].css'),
+    new CopyWebpackPlugin([
+      { from: './statics/' }
+    ], {
+      ignore: [
+        '.DS_Store'
+      ]
+    })
   ],
   sassLoader: {
     sourceComments: true
