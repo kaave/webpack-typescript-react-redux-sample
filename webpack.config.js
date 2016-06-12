@@ -1,10 +1,15 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+
 module.exports = {
   entry: [
     'babel-polyfill',
-    './app/scripts/entry_points/index.tsx'
+    './app/scripts/entry_points/index.tsx',
+    './app/styles/index.scss'
   ],
   output: {
-    filename: './dist/bundle.js'
+    path: './dist/',
+    filename: 'js/bundle.js'
   },
 
   // Enable sourcemaps for debugging webpack's output.
@@ -28,7 +33,33 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader!ts-loader'
+      },
+      {
+        // output .css file (not into JavaScript)
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('./css/[name].css')
+  ],
+  sassLoader: {
+    sourceComments: true
+  },
+  postcss: [
+    autoprefixer({
+      browser: [
+        'ie >= 11',               // IE
+        'ie_mob >= 10',           // IE Mobile
+        'last 2 edge versions',   // Microsoft Edge
+        'ff >= 40',               // Firefox
+        'chrome >= 44',           // Google Chrome
+        'last 2 safari versions', // Safari
+        'ios >= 8',               // iOS
+        'android >= 4.4',         // Android
+        'bb >= 10'                // BlackBerry
+      ]
+    })
+  ]
 };
