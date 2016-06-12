@@ -1,8 +1,9 @@
 {
-  "ambientDependencies": {
-    "enzyme": "registry:dt/enzyme#1.2.0+20160512040431",
-    "react": "registry:dt/react#0.14.0+20160423065914",
+  "globalDependencies": {
+    "enzyme": "registry:dt/enzyme#2.3.0+20160525083955",
+    "lodash": "registry:dt/lodash#3.10.0+20160330154726",
+    "react": "registry:dt/react#0.14.0+20160602151522",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
-    "sinon": "registry:dt/sinon#1.16.0+20160317120654"
+    "sinon": "registry:dt/sinon#1.16.0+20160517064723"
   }
 }

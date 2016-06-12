@@ -1,16 +1,21 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import { forEach } from 'lodash';
 
 import Hello from '../components/Hello';
 import SimpleClassComponent from '../components/SimpleClass';
 
-render(
-  // <Hello compiler="TypeScript" framework="React" />,
-  <SimpleClassComponent message="1,2,3 3,4,5" />,
-  document.getElementById('example')
-);
-
 window.addEventListener('DOMContentLoaded', async (): Promise<void> => {
+  forEach({
+    hello: <Hello compiler="TypeScript" framework="React" />,
+    'simple-class': <SimpleClassComponent message="1,2,3 3,4,5" />
+  }, (component: JSX.Element, id: string) => {
+    render(
+      component,
+      document.getElementById(id)
+    );
+  });
+
   const waited: string = await wait(3000, 'aaaaaa');
   console.log(waited);
 });

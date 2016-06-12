@@ -8,19 +8,17 @@
   },
   "exclude": [
     "node_modules",
-    "dist",
-    "typings/browser.d.ts",
-    "typings/browser/**"
+    "dist"
   ],
   "filesGlob": [
-    "typings/main.d.ts",
+    "typings/index.d.ts",
     "app/scripts/**/*.ts",
     "app/scripts/**/*.tsx",
     "test/scripts/**/*.ts",
     "test/scripts/**/*.tsx"
   ],
   "files": [
-    "typings/main.d.ts",
+    "typings/index.d.ts",
     "app/scripts/components/Hello.tsx",
     "app/scripts/components/SimpleClass.tsx",
     "app/scripts/entry_points/index.tsx",

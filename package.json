@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack -p",
+    "start": "npm run clean && webpack --watch -d & browser-sync start --config bs-config.js",
+    "build": "npm run clean && webpack -p",
+    "clean": "rm -rf ./dist/",
+    "server": "browser-sync",
     "test": "tsc && ava"
   },
   "babel": {
@@ -38,6 +40,7 @@
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
+    "browser-sync": "^2.13.0",
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "enzyme": "^2.3.0",
@@ -57,6 +60,8 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.9.0",
+    "lodash": "^4.13.1",
+    "moment": "^2.13.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
   }
