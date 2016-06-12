@@ -1,11 +1,14 @@
 module.exports = {
-  entry: './app/scripts/entry_points/index.tsx',
+  entry: [
+    'babel-polyfill',
+    './app/scripts/entry_points/index.tsx'
+  ],
   output: {
     filename: './dist/bundle.js'
   },
 
   // Enable sourcemaps for debugging webpack's output.
-  devtool: 'source-map',
+  // devtool: 'source-map',
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.

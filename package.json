@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack",
+    "start": "webpack-dev-server",
+    "build": "webpack -p",
     "test": "tsc && ava"
   },
   "babel": {
@@ -43,9 +44,11 @@
     "source-map-loader": "^0.1.5",
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.9.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
   }

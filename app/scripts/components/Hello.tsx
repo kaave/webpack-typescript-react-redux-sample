@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-export interface IProps {
+export interface IPropTypes {
   compiler: string;
   framework: string;
 }
 
-const Hello = ({ compiler, framework }: IProps) => (
+const Hello: React.SFC<IPropTypes> = (props: IPropTypes) => (
   <h1 className="hello__header">
-    Hello from {compiler} and {framework}!
+    Hello from {props.compiler} and {props.framework}!
   </h1>
 );
 export default Hello;
