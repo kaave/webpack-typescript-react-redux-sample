@@ -2,9 +2,11 @@ import * as React from 'react';
 import { render } from 'react-dom';
 
 import Hello from '../components/Hello';
+import SimpleClassComponent from '../components/SimpleClass';
 
 render(
-  <Hello compiler="TypeScript" framework="React" />,
+  // <Hello compiler="TypeScript" framework="React" />,
+  <SimpleClassComponent message="1,2,3 3,4,5" />,
   document.getElementById('example')
 );
 
@@ -38,7 +40,12 @@ class TestClass {
 
     const gen: IterableIterator<number> = counter();
     setInterval((): void => {
-      console.log(gen.next().value);
+      const { value }: IteratorResult<number> = gen.next();
+      console.log(value);
+
+      if (value >= 10) {
+        gen.return();
+      }
     }, 1000);
   }
 }

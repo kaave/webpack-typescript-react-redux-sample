@@ -22,6 +22,7 @@
   "files": [
     "typings/main.d.ts",
     "app/scripts/components/Hello.tsx",
+    "app/scripts/components/SimpleClass.tsx",
     "app/scripts/entry_points/index.tsx",
     "test/scripts/components/Hello.spec.tsx"
   ],
