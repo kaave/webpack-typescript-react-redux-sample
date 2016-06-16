@@ -2,6 +2,6 @@
 
 ```
 $ npm i
-$ typings i
+$ npm run typings -- i
 $ npm start
 ```

@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run clean && webpack --watch -d & browser-sync start --config bs-config.js",
+    "start": "npm run clean && webpack --watch -d & npm run server",
+    "start:js": "npm run clean && __JS__=1 webpack --watch -d & npm run server",
     "build": "npm run clean && webpack -p",
+    "build:js": "npm run clean && __JS__=1 webpack -p",
     "clean": "rm -rf ./dist/",
-    "server": "browser-sync",
+    "server": "browser-sync start --config bs-config.js",
+    "typings": "typings",
     "test": "tsc && ava"
   },
   "babel": {
@@ -22,7 +25,7 @@
       "./test/**/*.spec.{js,jsx}"
     ],
     "source": [
-      "./app/scripts/**/*.{ts,tsx}"
+      "./app/scripts/**/*.{ts,tsx,js,jsx}"
     ],
     "require": [
       "./test/test_helper.js"
@@ -55,6 +58,7 @@
     "style-loader": "^0.13.1",
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
+    "typings": "^1.0.5",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   },

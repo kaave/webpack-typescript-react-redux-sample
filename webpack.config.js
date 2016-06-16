@@ -1,16 +1,43 @@
 const extractTextPlugin = require('extract-text-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const glob = require('glob');
+const path = require('path');
+
+const entry = (fileLists => {
+  console.log(fileLists);
+  const result = {};
+
+  fileLists.forEach(files => files.forEach(filePath => {
+    const fileName = path.basename(filePath);
+    const fileNameWithoutExt = fileName.substr(0, fileName.lastIndexOf('.'));
+    if (result[fileNameWithoutExt] == null) {
+      result[fileNameWithoutExt] = ['babel-polyfill'];
+    }
+
+    result[fileNameWithoutExt].push(filePath);
+  }));
+
+  return result;
+})([
+  // TypeScript or JavaScript
+  ...(process.env.__JS__ ? [
+    glob.sync('./app/scripts/entry_points/*.js'),
+    glob.sync('./app/scripts/entry_points/*.jsx')
+  ] : [
+    glob.sync('./app/scripts/entry_points/*.ts'),
+    glob.sync('./app/scripts/entry_points/*.tsx')
+  ]),
+  // SCSS
+  glob.sync('./app/styles/[^_]*.scss')
+]);
+
 
 module.exports = {
-  entry: [
-    'babel-polyfill',
-    './app/scripts/entry_points/index.tsx',
-    './app/styles/index.scss'
-  ],
+  entry,
   output: {
     path: './dist/',
-    filename: 'js/app.js'
+    filename: 'js/[name].js'
   },
   // Enable sourcemaps for debugging webpack's output.
   // devtool: 'source-map',
@@ -23,12 +50,18 @@ module.exports = {
       '.web.js',
       '.ts',
       '.tsx',
-      '.js'
+      '.js',
+      '.jsx'
     ]
   },
 
   module: {
     loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
