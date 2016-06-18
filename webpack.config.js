@@ -80,7 +80,8 @@ module.exports = {
       { from: './statics/' }
     ], {
       ignore: [
-        '.DS_Store'
+        '.DS_Store',
+        '.gitkeep'
       ]
     })
   ],

@@ -52,7 +52,7 @@
    "logSnippet": true,
    "rewriteRules": false,
    "open": "local",
-   "browser": ["google chrome"],
+   "browser": "default",
    "xip": false,
    "hostnameSuffix": false,
    "reloadOnRestart": false,
