@@ -1,15 +1,21 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 
-import { createStore, combineReducers } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import createLogger = require('redux-logger');
 
 import todoReducers from '../reducers/todo';
 
 import ToDo from '../components/ToDo.tsx';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const store = createStore(combineReducers(todoReducers));
+  const store = createStore(
+    combineReducers(todoReducers),
+    applyMiddleware(
+      createLogger()
+    )
+  );
 
   render(
     (
