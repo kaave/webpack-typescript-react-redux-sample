@@ -5,7 +5,6 @@ const glob = require('glob');
 const path = require('path');
 
 const entry = (fileLists => {
-  console.log(fileLists);
   const result = {};
 
   fileLists.forEach(files => files.forEach(filePath => {

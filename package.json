@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run clean && webpack --watch -d & npm run server",
-    "start:js": "npm run clean && __JS__=1 webpack --watch -d & npm run server",
+    "start": "webpack --watch -d & npm run server",
+    "start:js": "__JS__=1 webpack --watch -d & npm run server",
     "build": "npm run clean && webpack -p",
     "build:js": "npm run clean && __JS__=1 webpack -p",
     "clean": "rm -rf ./dist/",
@@ -67,6 +67,10 @@
     "lodash": "^4.13.1",
     "moment": "^2.13.0",
     "react": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react-dom": "^15.0.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-actions": "^0.10.0",
+    "redux-logger": "^2.6.1"
   }
 }

@@ -19,8 +19,15 @@
   ],
   "files": [
     "typings/index.d.ts",
+    "app/scripts/actions/todo.ts",
+    "app/scripts/models/ToDo.ts",
+    "app/scripts/reducers/todo.ts",
     "app/scripts/components/Hello.tsx",
     "app/scripts/components/SimpleClass.tsx",
+    "app/scripts/components/ToDo.tsx",
+    "app/scripts/components/ToDo/ToDoForm.tsx",
+    "app/scripts/components/ToDo/ToDoList.tsx",
+    "app/scripts/components/ToDo/ToDoRow.tsx",
     "app/scripts/entry_points/index.tsx",
     "test/scripts/components/Hello.spec.tsx"
   ],
