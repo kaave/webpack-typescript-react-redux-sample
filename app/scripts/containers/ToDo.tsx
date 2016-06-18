@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import * as Actions from '../actions/todo';
 
-import ToDoForm from './ToDo/ToDoForm.tsx';
-import ToDoList from './ToDo/ToDoList.tsx';
+import ToDoForm from '../components/ToDo/ToDoForm.tsx';
+import ToDoList from '../components/ToDo/ToDoList.tsx';
 import ToDoModel from '../models/ToDo';
 
 export interface Props {

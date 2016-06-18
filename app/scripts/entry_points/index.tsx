@@ -7,7 +7,7 @@ import createLogger = require('redux-logger');
 
 import todoReducers from '../reducers/todo';
 
-import ToDo from '../components/ToDo.tsx';
+import ToDo from '../containers/ToDo.tsx';
 
 window.addEventListener('DOMContentLoaded', () => {
   const store = createStore(
