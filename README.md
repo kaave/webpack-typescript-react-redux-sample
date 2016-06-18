@@ -1,3 +1,8 @@
+## WHAT 何
+
+React & Redux on Webpack + TypeScript + babel sample project
+
+
 ## HOW TO USE
 
 ```
