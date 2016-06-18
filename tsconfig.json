@@ -19,6 +19,9 @@
   ],
   "files": [
     "typings/index.d.ts",
+    "app/scripts/actions/todo.ts",
+    "app/scripts/models/ToDo.ts",
+    "app/scripts/reducers/todo.ts",
     "app/scripts/components/Hello.tsx",
     "app/scripts/components/SimpleClass.tsx",
     "app/scripts/components/ToDo.tsx",

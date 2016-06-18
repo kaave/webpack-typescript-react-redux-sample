@@ -1,16 +1,12 @@
 import * as React from 'react';
 
+import ToDoModel from '../../models/ToDo';
 import ToDoRow from './ToDoRow.tsx';
 
 export interface Props {
-  todos: Array<ToDoProps>;
+  todos: Array<ToDoModel>;
   handleClick: (e: Event) => void;
 }
-
-export interface ToDoProps {
-  desc: string;
-  isDel: boolean;
-};
 
 const ToDoList: React.SFC<Props> = ({ todos, handleClick }) => {
   return (

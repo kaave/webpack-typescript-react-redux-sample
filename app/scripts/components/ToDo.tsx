@@ -1,24 +1,25 @@
 import * as React from 'react';
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+
+import * as Actions from '../actions/todo';
 
 import ToDoForm from './ToDo/ToDoForm.tsx';
-import ToDoList, { ToDoProps } from './ToDo/ToDoList.tsx';
+import ToDoList from './ToDo/ToDoList.tsx';
+import ToDoModel from '../models/ToDo';
 
-export interface Props {};
-export interface State {
-  todos: Array<ToDoProps>;
+export interface Props {
+  dispatch: Dispatch;
   inputValue: string;
+  todos: Array<ToDoModel>;
 };
+export interface State {};
 
-
-export default class ToDo extends React.Component<Props, State> {
+class ToDo extends React.Component<Props, State> {
   state: State;
 
   constructor(props: Props) {
     super(props);
-    this.state = {
-      todos: [],
-      inputValue: ''
-    };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
@@ -28,44 +29,25 @@ export default class ToDo extends React.Component<Props, State> {
 
   handleInputChange({ target }: Event): void {
     const node = target as HTMLInputElement;
-    this.setState(Object.assign({}, this.state, { inputValue: node.value }));
+    this.props.dispatch(Actions.inputText(node.value));
   }
 
   handleListClick({ target }: Event): void {
     const node = getListNode(target as HTMLElement);
     const index = parseInt(node.getAttribute('data-index'), 10);
-
-    this.setState(Object.assign({}, this.state, {
-      todos: this.state.todos.map((todo, i) => {
-        return i !== index ? todo : {
-          desc: todo.desc,
-          isDel: !todo.isDel
-        };
-      })
-    }));
+    this.props.dispatch(Actions.onListClick(index));
   }
 
   handleAddClick(): void {
-    if (this.state.inputValue.length === 0) {
+    if (this.props.inputValue.length === 0) {
       return;
     }
 
-    this.setState({
-      inputValue: '',
-      todos: [
-        ...this.state.todos,
-        {
-          desc: this.state.inputValue,
-          isDel: false
-        }
-      ]
-    });
+    this.props.dispatch(Actions.execAdd(this.props.inputValue));
   }
 
   handleRemoveClick(): void {
-    this.setState(Object.assign({}, this.state, {
-      todos: this.state.todos.filter(todo => !todo.isDel)
-    }));
+    this.props.dispatch(Actions.execRemove());
   }
 
   render(): JSX.Element {
@@ -74,7 +56,7 @@ export default class ToDo extends React.Component<Props, State> {
       handleAddClick,
       handleListClick,
       handleRemoveClick,
-      state: { todos, inputValue }
+      props: { todos, inputValue }
     }: ToDo = this;
 
     return (
@@ -89,3 +71,7 @@ export default class ToDo extends React.Component<Props, State> {
 function getListNode(node: HTMLElement): HTMLElement {
   return ['LI', 'BODY'].indexOf(node.nodeName) >= 0 ? node : getListNode(node.parentNode as HTMLElement);
 }
+
+const mapStateToProps = (state: Object) => (state);
+
+export default connect(mapStateToProps)(ToDo);

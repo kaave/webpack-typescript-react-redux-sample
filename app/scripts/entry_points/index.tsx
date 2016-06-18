@@ -1,14 +1,25 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+
+import todoReducers from '../reducers/todo';
+
 import ToDo from '../components/ToDo.tsx';
 
-window.addEventListener('DOMContentLoaded', () =>
+window.addEventListener('DOMContentLoaded', () => {
+  const store = createStore(combineReducers(todoReducers));
+
   render(
-    <ToDo />,
+    (
+      <Provider store={store}>
+        <ToDo />
+      </Provider>
+    ),
     document.getElementById('mount-point')
-  )
-);
+  );
+});
 
 // Generator check
 // function wait(msec: number = 1000, val: string): Promise<string> {
